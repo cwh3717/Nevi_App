@@ -3,11 +3,68 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-        >
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, MyActivity"
-            />
+              android:weightSum="1">
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:id="@+id/frameLayout6">
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="A1"
+                android:id="@+id/buttonA1" android:layout_gravity="left|center_vertical"/>
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="A3"
+                android:id="@+id/buttonA3" android:layout_gravity="right|center_vertical"/>
+        <Button
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="A2"
+                android:id="@+id/buttonA2" android:layout_gravity="center"/>
+    </FrameLayout>
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="B1"
+                android:id="@+id/buttonB1" android:layout_gravity="left|center_vertical"/>
+        <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="C1"
+                android:id="@+id/buttonC1" android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/frameLayout"
+                 android:layout_gravity="center_horizontal">
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="B2"
+                android:id="@+id/buttonB2" android:layout_gravity="left|center_vertical"/>
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="C2"
+                android:id="@+id/buttonC2" android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:id="@+id/frameLayout2" android:layout_gravity="center_horizontal">
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="B3"
+                android:id="@+id/buttonB3" android:layout_gravity="left|center_vertical"/>
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="C3"
+                android:id="@+id/buttonC3" android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:id="@+id/frameLayout3" android:layout_gravity="center_horizontal">
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="B4"
+                android:id="@+id/buttonB4" android:layout_gravity="left|center_vertical"/>
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="C4"
+                android:id="@+id/buttonC4" android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:id="@+id/frameLayout4" android:layout_gravity="center_horizontal">
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="B5"
+                android:id="@+id/buttonB5" android:layout_gravity="left|center_vertical"/>
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="C5"
+                android:id="@+id/buttonC5" android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:id="@+id/frameLayout5" android:layout_gravity="center_horizontal">
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="B6"
+                android:id="@+id/buttonB6" android:layout_gravity="left|center_vertical"/>
+        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="C6"
+                android:id="@+id/buttonC6" android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
 </LinearLayout>
 
