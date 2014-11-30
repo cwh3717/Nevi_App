@@ -1,70 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:weightSum="1">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:weightSum="1"
+              android:background="@drawable/main">
 
-    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                 android:id="@+id/frameLayout6">
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="A1"
-                android:id="@+id/buttonA1" android:layout_gravity="left|center_vertical"/>
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="A3"
-                android:id="@+id/buttonA3" android:layout_gravity="right|center_vertical"/>
-        <Button
-                android:layout_width="115dp"
-                android:layout_height="wrap_content"
-                android:text="A2"
-                android:id="@+id/buttonA2" android:layout_gravity="center"/>
-    </FrameLayout>
-    <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <Button
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="B1"
-                android:id="@+id/buttonB1" android:layout_gravity="left|center_vertical"/>
-        <Button
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="C1"
-                android:id="@+id/buttonC1" android:layout_gravity="right|center_vertical"/>
-    </FrameLayout>
-    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/frameLayout"
-                 android:layout_gravity="center_horizontal">
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="B2"
-                android:id="@+id/buttonB2" android:layout_gravity="left|center_vertical"/>
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="C2"
-                android:id="@+id/buttonC2" android:layout_gravity="right|center_vertical"/>
-    </FrameLayout>
-    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                 android:id="@+id/frameLayout2" android:layout_gravity="center_horizontal">
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="B3"
-                android:id="@+id/buttonB3" android:layout_gravity="left|center_vertical"/>
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="C3"
-                android:id="@+id/buttonC3" android:layout_gravity="right|center_vertical"/>
-    </FrameLayout>
-    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                 android:id="@+id/frameLayout3" android:layout_gravity="center_horizontal">
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="B4"
-                android:id="@+id/buttonB4" android:layout_gravity="left|center_vertical"/>
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="C4"
-                android:id="@+id/buttonC4" android:layout_gravity="right|center_vertical"/>
-    </FrameLayout>
-    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                 android:id="@+id/frameLayout4" android:layout_gravity="center_horizontal">
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="B5"
-                android:id="@+id/buttonB5" android:layout_gravity="left|center_vertical"/>
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="C5"
-                android:id="@+id/buttonC5" android:layout_gravity="right|center_vertical"/>
-    </FrameLayout>
-    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                 android:id="@+id/frameLayout5" android:layout_gravity="center_horizontal">
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="B6"
-                android:id="@+id/buttonB6" android:layout_gravity="left|center_vertical"/>
-        <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="C6"
-                android:id="@+id/buttonC6" android:layout_gravity="right|center_vertical"/>
-    </FrameLayout>
-</LinearLayout>
+    <GridLayout
+            android:layout_width="52dp"
+            android:layout_height="81dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:id="@+id/A1">
+    </GridLayout>
+    <GridLayout android:layout_width="52dp" android:layout_height="81dp" android:layout_marginLeft="58dp"
+                android:id="@+id/A2" android:layout_toEndOf="@+id/A1" android:layout_alignTop="@+id/A1"/>
+    <GridLayout android:layout_width="94dp" android:layout_height="46dp" android:layout_marginLeft="101dp"
+                android:id="@+id/B1" android:layout_toEndOf="@+id/A2" android:layout_alignTop="@+id/A2"/>
+    <GridLayout android:layout_width="94dp" android:layout_height="46dp"
+                android:id="@+id/B2" android:layout_toEndOf="@+id/A2"
+                android:layout_below="@+id/B1" android:layout_alignStart="@+id/B1"/>
+    <GridLayout android:layout_width="94dp" android:layout_height="46dp" android:id="@+id/B3"
+                android:layout_toEndOf="@+id/A2" android:layout_below="@+id/B2" android:layout_alignStart="@+id/B2"
+                android:layout_marginTop="1dp"/>
+    <GridLayout android:layout_width="94dp" android:layout_height="46dp" android:id="@+id/B4"
+                android:layout_toEndOf="@+id/A2" android:layout_below="@+id/B3" android:layout_alignStart="@+id/B3"
+                android:layout_marginTop="1dp"/>
+    <GridLayout android:layout_width="94dp" android:layout_height="46dp" android:id="@+id/B5"
+                android:layout_toEndOf="@+id/A2"
+                android:layout_below="@+id/B4" android:layout_alignStart="@+id/B4"
+                android:layout_marginTop="1dp"/>
+    <GridLayout android:layout_width="94dp" android:layout_height="46dp" android:id="@+id/B6"
+                android:layout_toEndOf="@+id/A2"
+                android:layout_below="@+id/B5" android:layout_alignStart="@+id/B5"
+                android:layout_marginTop="1dp"/>
+    <GridLayout android:layout_width="94dp" android:layout_height="46dp" android:id="@+id/B7"
+                android:layout_toEndOf="@+id/A2"
+                android:layout_below="@+id/B6" android:layout_alignStart="@+id/B6" android:layout_marginTop="1dp"/>
+    <GridLayout android:layout_width="94dp" android:layout_height="46dp" android:id="@+id/B8"
+                android:layout_toEndOf="@+id/A2"
+                android:layout_below="@+id/B7" android:layout_alignStart="@+id/B7" android:layout_marginTop="1dp"/>
+    <GridLayout android:layout_width="94dp" android:layout_height="46dp" android:id="@+id/B9"
+                android:layout_toEndOf="@+id/A2"
+                android:layout_below="@+id/B8" android:layout_alignStart="@+id/B8" android:layout_marginTop="1dp"
+                android:focusableInTouchMode="false"/>
+    <GridLayout android:layout_width="94dp" android:layout_height="46dp" android:id="@+id/gridLayout5"
+                android:layout_toEndOf="@+id/A2"
+                android:focusableInTouchMode="false" android:layout_below="@+id/B9"
+                android:layout_alignStart="@+id/B9" android:layout_marginTop="1dp"/>
+</RelativeLayout>
 
