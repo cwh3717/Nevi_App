@@ -16,14 +16,16 @@ public class MyThread extends Thread {
 
     public void run() {
 
+
+        StringBuilder sb = new StringBuilder();
+
         try {
             URL url = new URL("http://192.168.52.77/test.php");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             if (conn != null) {
 
-                conn.setConnectTimeout(10000);
+                conn.setConnectTimeout(1000);
                 conn.setUseCaches(false);
-
 
                 if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     BufferedReader br = new BufferedReader(
@@ -49,23 +51,21 @@ public class MyThread extends Thread {
         String jsonString = sb.toString();
 
         try {
-            String res = "";
+
             JSONArray ja = new JSONArray(jsonString);
 
             for (int i = 0; i < ja.length(); i++) {
                 JSONObject jo = ja.getJSONObject(i);
-                //결과물
-                res += "Number : " + jo.getString("num") + "\nsName : "
-                        + jo.getString("name") + "\n";
-            }
 
-            //결과 출력
-            tv.setText(res);
+            }
 
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             tv.setText(e.toString());
         }
+
+        //결과 출력
+        return jo;
 
     }
 
