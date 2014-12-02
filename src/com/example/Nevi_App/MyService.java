@@ -20,7 +20,6 @@ import java.util.ArrayList;
  */
 public class MyService extends Service implements ListenerBeaconScan {
 
-    private MyActivity myActivity = null;
 
     private static final String TAG = "BeaconService";
 
@@ -29,7 +28,6 @@ public class MyService extends Service implements ListenerBeaconScan {
     private static final int nRSSI = -90;
     private static final int nScanTime = 2000;
     private static final int nCheckTime = 6;
-    private static final int INTENT_ENABLE_BT_REQ = 200;
 
 
     @Override
@@ -56,7 +54,7 @@ public class MyService extends Service implements ListenerBeaconScan {
     @Override
     public void onDestroy() {
 
-        Toast.makeText(this, "Beacon Service가 중지되었습니다.", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Beacon Service가 종료되었습니다.", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onDestroy()");
         if (beaconScanManager != null) {
             beaconScanManager.stop();
@@ -68,26 +66,20 @@ public class MyService extends Service implements ListenerBeaconScan {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Toast.makeText(this, "Beacon Service가 시작되었습니다.", Toast.LENGTH_LONG).show();
+
         Log.d(TAG, "onStart()");
 
-        while (true) {
-
-            if (beaconScanManager != null) {
-                if (!beaconScanManager.isScanning()) {
-                    if (beaconScanManager.start()) {
-                        Bundle savedInstanceState = null;
-                        myActivity.onCreate(savedInstanceState);
-                        break;
-                    } else {
-                        Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                        myActivity.BluetoothCheck(enableIntent, INTENT_ENABLE_BT_REQ);
-                    }
-                } else {
-                    beaconScanManager.start();
+        if (beaconScanManager != null) {
+            if (!beaconScanManager.isScanning()) {
+                if (beaconScanManager.start()) {
+                    Toast.makeText(this, "Beacon Service가 연결되었습니다.", Toast.LENGTH_LONG).show();
                 }
+            } else {
+                beaconScanManager.stop();
+                Toast.makeText(this, "Beacon Service를 검색 못하였습니다.", Toast.LENGTH_LONG).show();
             }
         }
+
 
         return START_STICKY;
         //return super.onStartCommand(intent, flags, startId);
@@ -98,6 +90,8 @@ public class MyService extends Service implements ListenerBeaconScan {
     public boolean onBeaconScanned(ArrayList<ContentValues> mResultArray) {
         // TODO Auto-generated method stub
 
+        Intent intent = new Intent(this, MyActivity.class);
+        this.startActivity(intent);
         return false;
     }
 
