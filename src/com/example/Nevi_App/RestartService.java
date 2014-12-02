@@ -13,7 +13,7 @@ import android.util.Log;
 public class RestartService extends BroadcastReceiver {
 
     public static final String ACTION_RESTART_MYSERVICE
-            = "ACTION.Restart.PersistentService";
+            = "ACTION.Restart.MyService";
 
 
     @Override

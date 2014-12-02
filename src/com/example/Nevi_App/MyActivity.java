@@ -2,8 +2,10 @@ package com.example.Nevi_App;
 
 
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.*;
 import android.util.Log;
@@ -25,20 +27,15 @@ import java.net.URL;
 import java.util.ArrayList;
 
 
-public class MyActivity extends Activity implements ListenerBeaconScan {
+public class MyActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
 
-    private BluetoothAdapter bluetoothAdapter;
+    BroadcastReceiver receiver;
+    Intent intentMyService;
 
-    private BeaconScanManager beaconScanManager = null;
-
-    private static final int nRSSI = -90;
-    private static final int nScanTime = 2000;
-    private static final int nCheckTime = 6;
-    private static final int INTENT_ENABLE_BT_REQ = 200;
-
+    MyService myService;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,15 +48,22 @@ public class MyActivity extends Activity implements ListenerBeaconScan {
         t.start();
 
 
-        try {
-            beaconScanManager = new BeaconScanManager(getApplicationContext(), this, nRSSI, nScanTime, nCheckTime);
+        Log.d("MainActivity", "service start!!!!!!");
+
+        intentMyService = new Intent(this, MyService.class);
+
+        try
+        {
+
+            IntentFilter mainFilter = new IntentFilter();
+            registerReceiver(receiver, mainFilter);
+            startService(intentMyService);
+
         } catch (Exception e) {
+
+            Log.d("MainActivity", e.getMessage()+"");
             e.printStackTrace();
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-            finish();
         }
-
-
 
     }
 
@@ -267,87 +271,5 @@ public class MyActivity extends Activity implements ListenerBeaconScan {
             }
         };
     }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        if (beaconScanManager != null) {
-            if (!beaconScanManager.isScanning()) {
-                if (beaconScanManager.start()) {
-                    Toast.makeText(this, "Beacon Service 시작", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(this, MyActivity.class);
-                    this.startActivity(intent);
-                } else {
-                    Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                    startActivityForResult(enableIntent, INTENT_ENABLE_BT_REQ);
-                }
-            } else {
-                beaconScanManager.stop();
-            }
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
-        switch (requestCode) {
-            case INTENT_ENABLE_BT_REQ:
-            {
-                switch (resultCode) {
-                    case Activity.RESULT_OK:
-                    {
-                        if (beaconScanManager != null) {
-                            if (!beaconScanManager.isScanning()) {
-
-
-                                if (beaconScanManager.start()) {
-                                    Toast.makeText(this, "Beacon Service 시작", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(this, MyActivity.class);
-                                    this.startActivity(intent);
-                                } else {
-                                    Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                                    startActivityForResult(enableIntent, INTENT_ENABLE_BT_REQ);
-                                }
-                            } else {
-                                beaconScanManager.stop();
-                            }
-                        }
-                    }
-                    break;
-                }
-            }
-            break;
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        // TODO Auto-generated method stub
-        if (beaconScanManager != null) {
-            beaconScanManager.stop();
-            beaconScanManager = null;
-        }
-        super.onDestroy();
-    }
-
-
-    @Override
-    public boolean onBeaconScanned(ArrayList<ContentValues> mResultArray) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-
-    @Override
-    public void onBeaconScanError(Exception e) {
-        // TODO Auto-generated method stub
-        e.printStackTrace();
-        Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-        beaconScanManager.stop();
-    }
-
 
 }

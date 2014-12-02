@@ -100,7 +100,7 @@ public class MyService extends Service implements Runnable, ListenerBeaconScan {
     public void run() {
         Log.e(TAG, "run()");
 
-        if(!mIsRunnig){
+        if (!mIsRunnig) {
             Log.d(TAG, "run(), mIsRunning is false");
             Log.d(TAG, "run(), alarm service end");
             return;
@@ -115,8 +115,45 @@ public class MyService extends Service implements Runnable, ListenerBeaconScan {
         }
     }
 
+
     private void function() {
         Log.d(TAG, "function()");
+
+        beaconScanManager.start();
+
+
+        while (true) {
+
+
+            if (beaconScanManager != null) {
+                if (!beaconScanManager.isScanning()) {
+
+                    if (beaconScanManager.start()) {
+
+                        Intent intent = new Intent(this, MyActivity.class);
+                        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+                        try {
+                            pendingIntent.send();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        beaconScanManager.stop();
+
+                    }
+                } else {
+                    beaconScanManager.stop();
+                }
+            }
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+
 
     }
 
@@ -135,7 +172,7 @@ public class MyService extends Service implements Runnable, ListenerBeaconScan {
 
     }
 
-    private void unregisterRestartAlarm(){
+    private void unregisterRestartAlarm() {
 
         Log.d(TAG, "unregisterRestartAlarm()");
 
@@ -150,7 +187,6 @@ public class MyService extends Service implements Runnable, ListenerBeaconScan {
     @Override
     public boolean onBeaconScanned(ArrayList<ContentValues> mResultArray) {
         // TODO Auto-generated method stub
-
         return false;
     }
 
