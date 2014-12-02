@@ -4,7 +4,7 @@
     <entry_points version="2.0" />
   </component>
   <component name="IdProvider" IDEtalkID="6CAF85888E7E0BF41CBDF746C7A41491" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="Android 4.4.2 Google APIs" project-jdk-type="Android SDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="Android 5.0 Google APIs" project-jdk-type="Android SDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

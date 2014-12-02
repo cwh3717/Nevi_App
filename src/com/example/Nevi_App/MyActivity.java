@@ -59,6 +59,8 @@ public class MyActivity extends Activity implements ListenerBeaconScan {
             finish();
         }
 
+
+
     }
 
     class MyThread implements Runnable {
@@ -297,6 +299,8 @@ public class MyActivity extends Activity implements ListenerBeaconScan {
                     {
                         if (beaconScanManager != null) {
                             if (!beaconScanManager.isScanning()) {
+
+
                                 if (beaconScanManager.start()) {
                                     Toast.makeText(this, "Beacon Service 시작", Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(this, MyActivity.class);
